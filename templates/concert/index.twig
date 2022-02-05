@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/list.css') }}">
+{% endblock %}
+
+
+
+{% block body %}
+    <div class="page-title">
+        <h1>Liste des concerts</h1>
+    </div>
+    <section>
+        <div class="content-container">
+            {% for concert in concerts %}
+                <article class="card">
+                    <a href="{{ path('concert',{'id' : concert.id}) }}">
+                        <h2>{{ concert.name }}</h2>
+                        <img src="{{ concert.picture }}" alt="{{ concert.name }}">
+                    </a>
+                </article>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

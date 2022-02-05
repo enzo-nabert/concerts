@@ -1,0 +1,17 @@
+footer {
+    height: var(--nav);
+    margin-top: 60px;
+    padding: 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+
+    position: relative;
+    bottom: 0;
+}
+
+footer > p {
+    font-size: 25px;
+    color: #fff;
+}

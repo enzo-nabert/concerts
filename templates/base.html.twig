@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Concerts{% endblock %}</title>
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cards.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+    {% endblock %}
+
+    {% block javascripts %}
+        <script defer src="{{ asset('js/drop-down.js') }}"></script>
+    {% endblock %}
+</head>
+<body>
+<header>
+    <nav>
+        <div id="link-container" class="nav-abs nav-l">
+            <a href="{{ path('home') }}">Home</a>
+            <a href="{{ path('bands') }}">Bands</a>
+            <div id="drop-down-container">
+                <div id="drop-down-title">
+                    <p>Admin</p>
+                    <svg width="25" height="25" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 6H11L7.5 10.5L4 6Z" fill="currentColor"></path>
+                    </svg>
+                </div>
+                <div class="drop-down">
+                    <a href="{{ path('concerts_admin') }}">Concert</a>
+                    <a href="{{ path('band_admin') }}">Bands</a>
+                    <a href="{{ path('home') }}">Artistes</a>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h1>Concerts Symfony</h1>
+        </div>
+
+        <div class="nav-abs nav-r login-container">
+            {% if app.user %}
+                <a href="{{ path("home") }}">{{ app.user.firstName | capitalize}} </a>
+                <a href="{{ path('app_logout') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                        <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                    </svg>
+                </a>
+            {% else %}
+                <a href="{{ path("app_login") }}">Login</a>
+                <a href="{{ path('app_register') }}">Register</a>
+            {% endif %}
+        </div>
+    </nav>
+</header>
+<main>
+    {% block body %}{% endblock %}
+</main>
+
+<footer>
+    <p>APIDAE IUT Montpellier ©</p>
+</footer>
+</body>
+</html>

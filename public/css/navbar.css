@@ -1,0 +1,129 @@
+:root {
+    --nav: 70px;
+    --nav-padding: 15px;
+}
+
+body {
+    background: #d7fff6;
+}
+
+main {
+    min-height: calc(100vh - 2*var(--nav) - 60px);
+
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Itim", serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    height: var(--nav);
+    display: flex;
+    justify-content: center;
+    background: #000;
+}
+
+.nav-abs {
+    position: absolute;
+    height: var(--nav);
+}
+
+.nav-r {
+    right: var(--nav-padding);
+}
+
+.nav-l {
+    left: var(--nav-padding);
+}
+
+nav * {
+    color: #fff;
+}
+
+nav > div {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    font-size: 25px;
+}
+
+nav h1 {
+    font-size: 40px;
+}
+
+#link-container {
+    column-gap: 20px;
+}
+
+#search-bar {
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+}
+
+.page-title {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ccc;
+}
+
+#drop-down-container {
+    cursor: pointer;
+    position: relative;
+}
+
+#drop-down-title {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+
+#drop-down-title svg{
+    transition: transform 0.3s linear;
+}
+
+#drop-down-container p {
+    font-size: 25px;
+}
+
+.drop-down {
+    padding: 10px;
+
+    opacity: 0;
+    flex-direction: column;
+
+    border-radius: 0 0 15px 15px;
+    background: #000;
+    position: absolute;
+    top: 50px;
+    left: -10px;
+    transition: all 0.3s linear;
+}
+
+.active svg {
+    transform: rotate(180deg);
+}
+
+.active .drop-down{
+    opacity: 1;
+}
+
+.login-container {
+    display: flex;
+    column-gap: 20px;
+}
+
+.login-container > a {
+    display: flex;
+    align-items: center;
+}

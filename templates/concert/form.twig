@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/form.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="page-title"><h1>{% if create %} Nouveau {% else %} Modification {% endif%} concert</h1></div>
+    <section>
+        {{ form_start(form) }}
+        <input type="submit" value="save" class="submit">
+        {{ form_end(form) }}
+    </section>
+
+{% endblock %}

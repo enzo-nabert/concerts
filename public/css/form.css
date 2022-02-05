@@ -1,0 +1,65 @@
+section {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+}
+section > button {
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+form > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 15px;
+}
+
+form > div > *:not(label):not(div){
+    padding: 10px;
+}
+
+form > div > div {
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+}
+
+form > div > div > select {
+    padding: 5px 10px;
+}
+
+form input {
+    border-radius: 10px;
+    border: 1px solid #000;
+    font-size: 20px;
+}
+
+form select {
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+form label{
+    font-size: 30px;
+}
+
+form select[multiple]::-webkit-scrollbar {
+    width: unset;
+}
+
+.checkbox {
+    width: 50%;
+    height: 50%;
+}
+
+.submit {
+    padding: 10px 0;
+    cursor: pointer;
+}

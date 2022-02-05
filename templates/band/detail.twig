@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/bands/detail.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/list.css') }}">
+{% endblock %}
+
+
+
+{% block body %}
+    <div class="page-title">
+        <h1>{{ band.name }}</h1>
+    </div>
+    <section>
+        <div class="content-container">
+            {% for artist in band.artists %}
+                <article>
+                    <div>
+                        <p>{{ artist.firstName | capitalize }}</p>
+                        <p class="surname">{{ artist.surname | upper }}</p>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+        <div class="next">
+            <h2>Leur prochains concerts</h2>
+            <div class="content-container">
+                {% for concert in band.concerts %}
+                    <article>
+                        <a href="{{ path('concert', {'id': concert.id }) }}">
+                            <p>{{ concert.name}}</p>
+                        </a>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/list.css') }}">
+
+{% endblock %}
+
+{% block body %}
+    <div class="page-title">
+        <h1>Liste des groupes</h1>
+    </div>
+    <section>
+    <div class="content-container">
+        {% for band in bands %}
+            <article class="card">
+                <a href="{{ path('band_detail',{'id' : band.id}) }}">
+                    <h2>{{ band.name }}</h2>
+                </a>
+            </article>
+        {% endfor %}
+    </div>
+    </section>
+{% endblock %}

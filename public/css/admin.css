@@ -1,0 +1,80 @@
+section {
+    margin-top: 60px;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+section.concerts {
+    padding: 0 10%;
+}
+section.bands {
+    padding: 0 30%;
+}
+section.artists {
+    padding: 0 10%;
+}
+
+table {
+    border-collapse: collapse;
+    font-size: 25px;
+}
+
+tr:nth-child(even) {
+    background: #ccc;
+}
+
+tr:nth-child(odd) {
+    background: #ddd;
+}
+
+thead tr.thead {
+    background: #aaa;
+}
+
+tr {
+    text-align: center;
+}
+
+td {
+    max-width: 200px;
+    overflow-x: scroll;
+}
+
+td,th {
+    padding: 10px 20px;
+    border-bottom: 2px solid #000;
+}
+
+th {
+    border-top: 2px solid #000;
+}
+
+.button {
+    padding: 10px 15px;
+    display: block;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modify {
+    background: #ffb000;
+}
+
+.delete {
+    background: #f00;
+}
+
+.new-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.new {
+    background: #00f;
+}
+

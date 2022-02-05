@@ -1,0 +1,25 @@
+article {
+    padding: 10px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px #000;
+    font-size: 25px;
+}
+
+.next {
+    width: 100%;
+    margin-top: 100px;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 5px 5px 15px #000;
+}
+
+.surname {
+    font-weight: bold;
+}

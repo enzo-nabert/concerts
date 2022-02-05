@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="page-title"><h1>Tableau de bord concerts</h1></div>
+    <section class="concerts">
+        <table>
+            <thead>
+            <tr class="thead">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Begin</th>
+                <th>End</th>
+                <th>Capacity</th>
+                <th>Picture</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for concert in concerts %}
+                <tr>
+                    <td>{{ concert.id }}</td>
+                    <td>{{ concert.name }}</td>
+                    <td>{{ concert.date.format("d/m/Y") }}</td>
+                    <td>{{ concert.begin.format("H:m") }}</td>
+                    <td>{{ concert.end.format("H:i") }}</td>
+                    <td>{{ concert.capacity }}</td>
+                    <td>{{ concert.picture }}</td>
+                    <td>
+                        <a href="{{ path("concert_update",{id: concert.id }) }}" class="button modify">Modifier</a>
+                    </td>
+                    <td>
+                        <a href="{{ path("concert_delete",{id: concert.id }) }}" class="button delete">Supprimer</a>
+                    </td>
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="new-container">
+            <a class="button new" href="{{ path("concert_create") }}">Nouveau</a>
+        </div>
+
+    </section>
+
+{% endblock %}
