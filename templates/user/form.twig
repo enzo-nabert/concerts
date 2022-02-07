@@ -1,14 +1,14 @@
 {% extends "base.html.twig" %}
-
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/form.css') }}">
 {% endblock %}
 {% block body %}
+    <div class="page-title"><h1>profil de {{ app.user.firstName }}</h1></div>
     <section>
         {{ form_start(form) }}
         <input type="submit" value="save" class="submit">
         {{ form_end(form) }}
+        <a href="{{ path("change_password") }}">Modifier mot de passe</a>
     </section>
-
 {% endblock %}

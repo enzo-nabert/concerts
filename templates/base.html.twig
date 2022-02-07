@@ -16,9 +16,7 @@
     {% block stylesheets %}
     {% endblock %}
 
-    {% block javascripts %}
-        <script defer src="{{ asset('js/drop-down.js') }}"></script>
-    {% endblock %}
+
 </head>
 <body>
 <header>
@@ -26,6 +24,9 @@
         <div id="link-container" class="nav-abs nav-l">
             <a href="{{ path('home') }}">Home</a>
             <a href="{{ path('bands') }}">Bands</a>
+            <a href="{{ path('past_concerts') }}">Archives</a>
+
+            {% if app.user != null and "ROLE_ADMIN" in app.user.roles %}
             <div id="drop-down-container">
                 <div id="drop-down-title">
                     <p>Admin</p>
@@ -36,9 +37,11 @@
                 <div class="drop-down">
                     <a href="{{ path('concerts_admin') }}">Concert</a>
                     <a href="{{ path('band_admin') }}">Bands</a>
-                    <a href="{{ path('home') }}">Artistes</a>
+                    <a href="{{ path('artist_admin') }}">Artistes</a>
+                    <a href="{{ path('user_admin') }}">Users</a>
                 </div>
             </div>
+            {% endif %}
         </div>
         <div>
             <h1>Concerts Symfony</h1>
@@ -46,7 +49,7 @@
 
         <div class="nav-abs nav-r login-container">
             {% if app.user %}
-                <a href="{{ path("home") }}">{{ app.user.firstName | capitalize}} </a>
+                <a href="{{ path("profile") }}">{{ app.user.firstName | capitalize}} </a>
                 <a href="{{ path('app_logout') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
@@ -61,11 +64,18 @@
     </nav>
 </header>
 <main>
+    {% block javascripts %}
+        <script defer src="{{ asset('js/drop-down.js') }}"></script>
+    {% endblock %}
     {% block body %}{% endblock %}
 </main>
 
-<footer>
-    <p>APIDAE IUT Montpellier ©</p>
-</footer>
+
+    <footer>
+        {% block footer %}
+        <p>APIDAE IUT Montpellier ©</p>
+        {% endblock %}
+    </footer>
+
 </body>
 </html>

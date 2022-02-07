@@ -25,7 +25,7 @@ class Band
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Artist::class, mappedBy="band")
+     * @ORM\ManyToMany(targetEntity=Artist::class, mappedBy="bands")
      */
     private $artists;
 
@@ -72,7 +72,7 @@ class Band
     {
         if (!$this->artists->contains($artist)) {
             $this->artists[] = $artist;
-            $artist->addBand($this);
+            $artist->addBands($this);
         }
 
         return $this;

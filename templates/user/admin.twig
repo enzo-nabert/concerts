@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="page-title"><h1>Gestion Admins</h1></div>
+    <section class="concerts">
+        <table>
+            <thead>
+            <tr class="thead">
+                <th>Email</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Admin</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>
+                        <input type="checkbox" name="is_admin" id="admin" {% if user.is_admin %} checked {% endif %}
+                               onclick="onChecked('{{ user.email }}')"  style="transform: scale(2); cursor: pointer">
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    {% block javascripts %}
+        {{ parent() }}
+        <script defer>
+            function onChecked(email) {
+                const adminBox = document.getElementById("admin");
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST","{{ path("user_admin_role") }}");
+                const data = {
+                    email,
+                    is_admin: adminBox.checked
+                };
+                xhr.send(JSON.stringify(data))
+            }
+        </script>
+    {% endblock %}
+
+
+{% endblock %}

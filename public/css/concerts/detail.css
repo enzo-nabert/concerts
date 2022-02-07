@@ -1,0 +1,36 @@
+section {
+    padding: 0 25px;
+    height: calc(100vh - 2*var(--nav) - 60px);
+    display: flex;
+    align-items: center;
+}
+
+
+
+.image-container {
+    width: 50%;
+    height: 71vh;
+
+}
+
+img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    font-size: 50px;
+}
+
+.date {
+    font-size: 75px;
+}
+
+.hours-container {
+    display: flex;
+    column-gap: 20px;
+}

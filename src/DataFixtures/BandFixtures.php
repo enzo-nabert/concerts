@@ -15,7 +15,7 @@ class BandFixtures extends Fixture implements DependentFixtureInterface
     {
         $artistRepository = $manager->getRepository(Artist::class);
         $concertRepository = $manager->getRepository(Concert::class);
-        $concert = $concertRepository->findOneBy(["name" => "le concert du siècle"]);
+        $concerts = $concertRepository->findAll();
 
         //band 1
         $b = new Band();
@@ -26,7 +26,7 @@ class BandFixtures extends Fixture implements DependentFixtureInterface
         foreach ($artists as $artist) {
             $b->addArtist($artist);
         }
-        $b->addConcert($concert);
+        $b->addConcert($concerts[0]);
 
         $manager->persist($b);
 
@@ -42,7 +42,7 @@ class BandFixtures extends Fixture implements DependentFixtureInterface
                 $b->addArtist($artist);
             }
         }
-        $b->addConcert($concert);
+        $b->addConcert($concerts[1]);
 
         $manager->persist($b);
         $manager->flush();

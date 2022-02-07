@@ -1,6 +1,6 @@
 :root {
     --nav: 70px;
-    --nav-padding: 15px;
+    --nav-padding: 25px;
 }
 
 body {
@@ -8,7 +8,7 @@ body {
 }
 
 main {
-    min-height: calc(100vh - 2*var(--nav) - 60px);
+    min-height: calc(100vh - 2*var(--nav));
 
 }
 
@@ -120,7 +120,7 @@ nav h1 {
 
 .login-container {
     display: flex;
-    column-gap: 20px;
+    column-gap: 30px;
 }
 
 .login-container > a {

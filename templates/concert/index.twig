@@ -8,7 +8,7 @@
 
 {% block body %}
     <div class="page-title">
-        <h1>Liste des concerts</h1>
+        <h1>{% if past %} Anciens concerts {% else %} Concerts à venir {% endif %}</h1>
     </div>
     <section>
         <div class="content-container">

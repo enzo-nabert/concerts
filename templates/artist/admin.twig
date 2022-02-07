@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="page-title"><h1>Tableau de bord artists</h1></div>
+    <section class="bands">
+        <table>
+            <thead>
+            <tr class="thead">
+                <th>ID</th>
+                <th>firstName</th>
+                <th>Surname</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for artist in artists %}
+                <tr>
+                    <td>{{ artist.id }}</td>
+                    <td>{{ artist.firstName }}</td>
+                    <td>{{ artist.surname }}</td>
+                    <td>
+                        <a href="{{ path("artist_update",{id: artist.id }) }}" class="button modify">Modifier</a>
+                    </td>
+                    <td>
+                        <a href="{{ path("artist_delete",{id: artist.id }) }}" class="button delete">Supprimer</a>
+                    </td>
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="new-container">
+            <a class="button new" href="{{ path("artist_new") }}">Nouveau</a>
+        </div>
+
+    </section>
+
+{% endblock %}

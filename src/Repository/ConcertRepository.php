@@ -19,6 +19,20 @@ class ConcertRepository extends ServiceEntityRepository
         parent::__construct($registry, Concert::class);
     }
 
+    public function findByDate($date, $type) {
+        $query =  $this->createQueryBuilder('c');
+        if ($type === "before") {
+            $query ->andWhere('c.date <= :date');
+        } else if ($type === "after") {
+            $query ->andWhere('c.date >= :date');
+        }
+
+        return $query->setParameter('date', $date)
+            ->getQuery()
+            ->getResult();
+
+    }
+
     // /**
     //  * @return Concert[] Returns an array of Concert objects
     //  */

@@ -32,11 +32,11 @@ class Artist
     /**
      * @ORM\ManyToMany(targetEntity=Band::class, inversedBy="artists")
      */
-    private $band;
+    private $bands;
 
     public function __construct()
     {
-        $this->band = new ArrayCollection();
+        $this->bands = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -71,15 +71,15 @@ class Artist
     /**
      * @return Collection|Band[]
      */
-    public function getBand(): Collection
+    public function getBands(): Collection
     {
-        return $this->band;
+        return $this->bands;
     }
 
-    public function addBand(Band $band): self
+    public function addBands(Band $band): self
     {
-        if (!$this->band->contains($band)) {
-            $this->band[] = $band;
+        if (!$this->bands->contains($band)) {
+            $this->bands[] = $band;
         }
 
         return $this;
@@ -87,7 +87,7 @@ class Artist
 
     public function removeBand(Band $band): self
     {
-        $this->band->removeElement($band);
+        $this->bands->removeElement($band);
 
         return $this;
     }

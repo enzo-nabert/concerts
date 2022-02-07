@@ -10,7 +10,25 @@
     <div class="page-title">
         <h1>{{ concert.name }}</h1>
     </div>
-    <section>
-        <img id="" src="{{ concert.picture }}" alt="{{ concert.name }}">
+    <section class="container">
+        <aside class="image-container">
+            <img id="" src="{{ concert.picture }}" alt="{{ concert.name }}">
+        </aside>
+        <article>
+            <p class="date">{{ concert.date.format("d F Y") }}</p>
+            <div class="hours-container">
+                <p>Horaires: </p>
+                <p>{{ concert.begin.format("H:i") }}</p>
+                <p>{{ concert.end.format("H:i") }}</p>
+            </div>
+
+            <p>Salle: {{ concert.room.name }}</p>
+            <p>Nombre de places: {{ concert.capacity }}</p>
+        </article>
+
     </section>
+{% endblock %}
+
+{% block footer %}
+    <p>Adresse: {{ address }}</p>
 {% endblock %}

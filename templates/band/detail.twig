@@ -23,15 +23,19 @@
             {% endfor %}
         </div>
         <div class="next">
-            <h2>Leur prochains concerts</h2>
+            <h2>Leurs prochains concerts</h2>
             <div class="content-container">
-                {% for concert in band.concerts %}
+                {% if concerts | length != 0 %}
+                {% for concert in concerts %}
                     <article>
                         <a href="{{ path('concert', {'id': concert.id }) }}">
                             <p>{{ concert.name}}</p>
                         </a>
                     </article>
                 {% endfor %}
+                {% else %}
+                    <p>Aucun concerts à venir</p>
+                {% endif %}
             </div>
         </div>
     </section>
